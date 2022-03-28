@@ -34,31 +34,31 @@ func resourceRedashOrganization() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"auth_password_login_enabled": {
 				Type:     schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_enabled": {
 				Type:     schema.TypeBool,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_type": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_entity_id": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_metadata_url": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_nameid_format": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 			"auth_saml_sso_url": {
 				Type:     schema.TypeString,
-				Required: false,
+				Optional: true,
 			},
 		},
 	}
