@@ -37,7 +37,7 @@ func resourceRedashOrganization() *schema.Resource {
 				Optional: true,
 			},
 			"auth_saml_enabled": {
-				Type:     schema.TypeBool,
+				Type:     schema.TypeString,
 				Optional: true,
 			},
 			"auth_saml_type": {
@@ -71,7 +71,7 @@ func resourceRedashOrganizationCreate(ctx context.Context, d *schema.ResourceDat
 
 	payload := redash.Organization{
 		AuthPasswordLoginEnabled: 	d.Get("auth_password_login_enabled").(bool),
-		AuthSamlEnabled: 			d.Get("auth_saml_enabled").(bool),
+		AuthSamlEnabled: 			d.Get("auth_saml_enabled").(string),
 		AuthSamlType: 				d.Get("auth_saml_type").(string),
 		AuthSamlEntityId: 			d.Get("auth_saml_entity_id").(string),
 		AuthSamlMetadataUrl: 		d.Get("auth_saml_metadata_url").(string),
@@ -129,7 +129,7 @@ func resourceRedashOrganizationUpdate(ctx context.Context, d *schema.ResourceDat
 
 	payload := redash.Organization{
 		AuthPasswordLoginEnabled: d.Get("auth_password_login_enabled").(bool),
-		AuthSamlEnabled: d.Get("auth_saml_enabled").(bool),
+		AuthSamlEnabled: d.Get("auth_saml_enabled").(string),
 		AuthSamlType: d.Get("auth_saml_type").(string),
 		AuthSamlEntityId: d.Get("auth_saml_entity_id").(string),
 		AuthSamlMetadataUrl: d.Get("auth_saml_metadata_url").(string),
@@ -151,12 +151,12 @@ func resourceRedashOrganizationDelete(ctx context.Context, d *schema.ResourceDat
 
 	payload := redash.Organization{
 		AuthPasswordLoginEnabled: 	true,
-		AuthSamlEnabled: 			false,
-		AuthSamlType: 				"",
-		AuthSamlEntityId: 			"",
+		AuthSamlEnabled: 		"",
+		AuthSamlType: 			"",
+		AuthSamlEntityId: 		"",
 		AuthSamlMetadataUrl: 		"",
 		AuthSamlNameidFormat: 		"",
-		AuthSamlSsoUrl: 			"",
+		AuthSamlSsoUrl: 		"",
 	}
 
 	organization, err := c.UpdateOrganization(&payload)
