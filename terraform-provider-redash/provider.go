@@ -43,6 +43,7 @@ func Provider() *schema.Provider {
 			"redash_user":                         resourceRedashUser(),
 			"redash_group":                        resourceRedashGroup(),
 			"redash_group_data_source_attachment": resourceRedashGroupDataSourceAttachment(),
+			"redash_organization":                 resourceRedashOrganization(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
 			"redash_data_source": dataSourceRedashDataSource(),
